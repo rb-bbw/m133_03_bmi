@@ -11,11 +11,12 @@ public class BmiController {
     @GetMapping("/bmi")
     public String bmiForm(Model model) {
         model.addAttribute("bmi", new Bmi());
-        return "bmi";
+        return "bmi_form";
     }
     @PostMapping("/bmi")
     public String bmiSubmit(Model model, @ModelAttribute Bmi bmi) {
+        bmi.calculateBmi();
         model.addAttribute("bmi", bmi);
-        return "bmi";
+        return "bmi_result";
     }
 }
