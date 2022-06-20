@@ -7,6 +7,10 @@
 </head>
 <body class="container">
     <h1 class="px-3">BMI</h1>
+    <h3 class="px-3">
+        Count
+        <th:block th:text="${@bmi.count}"></th:block>
+    </h3>
 
     <form action="#" th:action="@{/bmi}" th:object="${bmi}" method="post">
         <div class="row row-cols-auto px-3 py-1">

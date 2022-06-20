@@ -1,6 +1,15 @@
 package ch.bbw.bmi;
 
-public class Bmi {
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+import java.io.Serializable;
+
+@Component
+@SessionScope
+public class Bmi implements Serializable {
+    private int count;
+
     private double bmi;
     private int height;
     private int weight;
@@ -32,5 +41,15 @@ public class Bmi {
 
     public String toString() {
         return this.height + ", " + this.weight + ", " + getBmi();
+    }
+
+    public int getCount() {
+        return count;
+    }
+    public void setCount(int count) {
+        this.count = count;
+    }
+    public void incrementCount() {
+        this.count += 1;
     }
 }
