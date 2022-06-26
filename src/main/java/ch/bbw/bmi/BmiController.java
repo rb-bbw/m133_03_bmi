@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 @Controller
@@ -22,7 +23,8 @@ public class BmiController implements Serializable {
         model.addAttribute("bmi", this.bmi);
         return "bmi_form";
     }
-    @PostMapping("/bmi")
+
+    @PostMapping(value="/bmi", params="action=submit")
     public String bmiSubmit(Model model, @ModelAttribute Bmi bmi) {
         this.bmi.setHeight(bmi.getHeight());
         this.bmi.setWeight(bmi.getWeight());
@@ -32,5 +34,10 @@ public class BmiController implements Serializable {
 
         model.addAttribute("bmi", this.bmi);
         return "bmi_result";
+    }
+    @PostMapping(value="/bmi", params="action=reset")
+    public String bmiReset(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect:/bmi";
     }
 }
