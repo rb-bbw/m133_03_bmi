@@ -31,6 +31,6 @@ public class BmiController implements Serializable {
         this.bmi.calculateBmi();
 
         model.addAttribute("bmi", this.bmi);
-        return "bmi_form";
+        return "bmi_result";
     }
 }
